@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Rocks Paper Scissors Shoot!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/journal/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -13,14 +13,22 @@
   <header>
 
   </header>
+
+
   <main class="container">
-    <div class="computers-choice"></div>
-    <div id="rocks"></div>
-    <button class="btn btn-primary">Rocks</button>
-    <div id="papers"></div>
-    <button class="btn btn-primary">Papers</button>
-    <div id="scissors"></div>
-    <button class="btn btn-primary">Scissors</button>
+    <h4>Choose:</h4>
+    <button id="rock-button" data-choice="rock" class="btn btn-primary">Rocks</button>
+    <button id="paper-button" data-choice="paper" class="btn btn-primary">Papers</button>
+    <button id="scissors-button" data-choice="scissors" class="btn btn-primary">Scissors</button>
+    <div id="users-choice-div">
+      <h4>You chose: <span id="users-choice"></span>
+    </div>
+    <div id="computers-choice-div">
+      <h4>The computer chose: <span id="computers-choice"></span>
+    </div>
+    <div id="win-div">
+      <h4><span id="win-msg"></span></h4>
+    </div>
 
 
   </main>
