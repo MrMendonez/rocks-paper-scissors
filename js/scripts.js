@@ -21,17 +21,8 @@ $(document).ready(function(){
 
     $('#computers-choice').html(computerChoice);
   $('#users-choice').html(userChoice);
-    
+
   });
-  
-  // When button is clicked rocks, papers, or scissors is chosen.
-  // function shoot(){
-  //   var ranChoice = Math.floor(Math.random() * choices.length);
-  //   $('#computers-choice').html(choices[ranChoice]);
-  // }
-
-
-
 
   var compare = function(choice1, choice2) {
     var tieMsg = "The result is a tie!";

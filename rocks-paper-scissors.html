@@ -7,8 +7,15 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <nav>
-
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Rocks Paper Scissors...</a>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#contact" data-toggle="modal">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
   <header>
 
@@ -29,13 +36,45 @@
     <div id="win-div">
       <h4><span id="win-msg"></span></h4>
     </div>
-
-
   </main>
-  <footer>
-
+  <footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class ="container">
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://www.linkedin.com/in/darrylmendonez" target="blank"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/MrMendonez" target="blank"><i class="fa fa-github"></i></a></li>
+          <li><a href="http://stackoverflow.com/users/5458425/darryl-mendonez?tab=profile" target="blank"><i class="fa fa-stack-overflow"></i></a></li>
+          <li><a href="https://www.twitter.com/MrMendonez" target="blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCOCFwUF--91YYR0fMOPzfSQ/videos" target="blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href ="https://plus.google.com/+DarrylMendonez/about" target="blank"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href ="mailto:darrylmendonez@gmail.com"><i class="fa fa-envelope"></i></a></li>
+        </ul>
+      </div> <!-- collapse navbar-collapse navHeaderCollapse -->
+    </div> <!-- container -->
   </footer>
-
+  <aside class="modal fade" id="contact" role="dialog"  tabindex='-1'>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Contact</h4>
+        </div>
+        <div class = "modal-body text-center">
+          <ul class="list-inline">
+            <li><a href="https://www.linkedin.com/in/darrylmendonez" target="blank" class="btn btn-linkedin"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/MrMendonez" target="blank" class="btn btn-github"><i class="fa fa-github"></i></a></li>
+            <li><a href="http://stackoverflow.com/users/5458425/darryl-mendonez?tab=profile" target="blank" class="btn btn-stackoverflow"><i class="fa fa-stack-overflow"></i></a></li>
+            <li><a href="https://www.twitter.com/MrMendonez" target="blank" class = "btn btn-twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCOCFwUF--91YYR0fMOPzfSQ/videos" target="blank" class="btn btn-youtube"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href ="https://plus.google.com/+DarrylMendonez/about" target="blank" class="btn btn-google-plus"><i class="fa fa-google-plus"></i></a></li>
+            <li class="u-email"><a href ="mailto:darrylmendonez@gmail.com" class = "btn btn-email"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </aside>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
