@@ -2,10 +2,14 @@
 
 $(document).ready(function(){
   var choices = ["rock", "paper", "scissors"];
+  var round = 0;
   var userScore = 0;
   var computerScore = 0;
 
   $(document).on('click', "#rock-button, #paper-button, #scissors-button", function(){
+
+    round++;
+    $("#round-number").html(round);
 
     var computerChoice = Math.random();
     if (computerChoice < 0.34) {
@@ -55,25 +59,33 @@ $(document).ready(function(){
     } else if (choice1 === "paper") {
       if (choice2 === "rock") {
         $("#win-msg").html(paperWins);
-        console.log(paperWins);
+        $("#you-win-or-lose-msg").html(youWin);
+        userScore++;
+        $("#user-score").html(userScore);
         return paperWins; 
       } else {
         $("#win-msg").html(scissorsWins);
-        console.log(scissorsWins);
+        $("#you-win-or-lose-msg").html(youLose);
+        computerScore++;
+        $("#computer-score").html(computerScore);
         return scissorsWins;
       }
     } else {
       if (choice1 === "scissors") {
         if (choice2 === "paper") {
           $("#win-msg").html(scissorsWins);
-          console.log(scissorsWins);
+          $("#you-win-or-lose-msg").html(youWin);
+          userScore++;
+          $("#user-score").html(userScore);
           return scissorsWins;
         } else {
           $("#win-msg").html(rockWins);
-          console.log(rockWins);
+          $("#you-win-or-lose-msg").html(youLose);
+          computerScore++;
+          $("#computer-score").html(computerScore);
           return rockWins;
-        };
-      };
-    };
-  };
+        }
+      }
+    }
+  }
 });
