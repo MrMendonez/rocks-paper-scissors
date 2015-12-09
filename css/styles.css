@@ -1,6 +1,8 @@
 /* Styles for Rocks Paper Scissors game */
 
-
+.inline {
+  display: inline;
+}
 
 /* Social Media Buttons */
 

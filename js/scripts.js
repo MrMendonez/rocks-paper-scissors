@@ -2,6 +2,8 @@
 
 $(document).ready(function(){
   var choices = ["rock", "paper", "scissors"];
+  var userScore = 0;
+  var computerScore = 0;
 
   $(document).on('click', "#rock-button, #paper-button, #scissors-button", function(){
 
@@ -20,7 +22,7 @@ $(document).ready(function(){
     compare(userChoice, computerChoice);
 
     $('#computers-choice').html(computerChoice);
-  $('#users-choice').html(userChoice);
+    $('#users-choice').html(userChoice);
 
   });
 
@@ -29,6 +31,8 @@ $(document).ready(function(){
     var rockWins = "Rock wins!";
     var paperWins = "Paper wins!";
     var scissorsWins = "Scissors wins!";
+    var youLose = "You lose this round!"
+    var youWin = "You win this round!"
 
     if (choice1 === choice2) {
       $("#win-msg").html(tieMsg);
@@ -37,11 +41,15 @@ $(document).ready(function(){
     } else if (choice1 === "rock") {
       if (choice2 === "scissors") {
         $("#win-msg").html(rockWins);
-        console.log(rockWins);
+        $("#you-win-or-lose-msg").html(youWin);
+        userScore++;
+        $("#user-score").html(userScore);
         return rockWins;
       } else {
         $("#win-msg").html(paperWins);
-        console.log(paperWins);
+        $("#you-win-or-lose-msg").html(youLose);
+        computerScore++;
+        $("#computer-score").html(computerScore);
         return paperWins;   
       }
     } else if (choice1 === "paper") {
