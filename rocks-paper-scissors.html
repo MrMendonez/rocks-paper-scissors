@@ -25,9 +25,9 @@
   <main class="container">
     <h3>Round: <span id="round-number"></span></h3>
     <h4 class="inline">Choose: </h4>
-    <button id="rock-button" data-choice="rock" class="btn btn-primary"><i class="fa fa-hand-rock-o"></i> Rock</button>
-    <button id="paper-button" data-choice="paper" class="btn btn-primary"><i class="fa fa-hand-paper-o"></i> Paper</button>
-    <button id="scissors-button" data-choice="scissors" class="btn btn-primary"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
+    <button id="rock-button" data-choice="Rock" class="btn btn-primary"><i class="fa fa-hand-rock-o"></i> Rock</button>
+    <button id="paper-button" data-choice="Paper" class="btn btn-primary"><i class="fa fa-hand-paper-o"></i> Paper</button>
+    <button id="scissors-button" data-choice="Scissors" class="btn btn-primary"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
     <div id="users-choice-div">
       <h4>You chose: <span id="users-choice"></span>
     </div>
@@ -76,6 +76,21 @@
             <li><a href ="https://plus.google.com/+DarrylMendonez/about" target="blank" class="btn btn-google-plus"><i class="fa fa-google-plus"></i></a></li>
             <li class="u-email"><a href ="mailto:darrylmendonez@gmail.com" class = "btn btn-email"><i class="fa fa-envelope"></i></a></li>
           </ul>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <aside class="modal fade" id="winner-modal" role="dialog"  tabindex='-1'>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Game Over</h4>
+        </div>
+        <div class = "modal-body text-center">
+          <h3>You Win!</h3>
         </div>
         <div class="modal-footer">
           <a class="btn btn-default" data-dismiss="modal">Close</a>

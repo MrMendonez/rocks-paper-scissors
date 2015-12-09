@@ -1,7 +1,7 @@
 // Scripts for Rocks Paper Scissors game
 
 $(document).ready(function(){
-  var choices = ["rock", "paper", "scissors"];
+  var choices = ["Rock", "Paper", "Scissors"];
   var round = 0;
   var userScore = 0;
   var computerScore = 0;
@@ -10,14 +10,17 @@ $(document).ready(function(){
 
     round++;
     $("#round-number").html(round);
+    // if (round === 5){
+    //   alert("The game is over");
+    // }
 
     var computerChoice = Math.random();
     if (computerChoice < 0.34) {
-      computerChoice = "rock";
+      computerChoice = "Rock";
     } else if(computerChoice <= 0.67) {
-      computerChoice = "paper";
+      computerChoice = "Paper";
     } else {
-      computerChoice = "scissors";
+      computerChoice = "Scissors";
     };
 
     var userChoice = $(this).data('choice')
@@ -42,8 +45,8 @@ $(document).ready(function(){
       $("#win-msg").html(tieMsg);
       console.log(tieMsg);
       return tieMsg;
-    } else if (choice1 === "rock") {
-      if (choice2 === "scissors") {
+    } else if (choice1 === "Rock") {
+      if (choice2 === "Scissors") {
         $("#win-msg").html(rockWins);
         $("#you-win-or-lose-msg").html(youWin);
         userScore++;
@@ -56,8 +59,8 @@ $(document).ready(function(){
         $("#computer-score").html(computerScore);
         return paperWins;   
       }
-    } else if (choice1 === "paper") {
-      if (choice2 === "rock") {
+    } else if (choice1 === "Paper") {
+      if (choice2 === "Rock") {
         $("#win-msg").html(paperWins);
         $("#you-win-or-lose-msg").html(youWin);
         userScore++;
@@ -71,8 +74,8 @@ $(document).ready(function(){
         return scissorsWins;
       }
     } else {
-      if (choice1 === "scissors") {
-        if (choice2 === "paper") {
+      if (choice1 === "Scissors") {
+        if (choice2 === "Paper") {
           $("#win-msg").html(scissorsWins);
           $("#you-win-or-lose-msg").html(youWin);
           userScore++;
