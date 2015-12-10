@@ -1,11 +1,35 @@
 /* Styles for Rocks Paper Scissors game */
 
-*, html, body, h1, h2, h3, h4, h5, p {
+*, html, body, h1, h2, h3, h4, h5, h6, p {
   font-family: 'Press Start 2P', cursive;
 }
 
 .inline {
   display: inline;
+}
+
+
+#tv {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  margin: 20px 0;
+  background: red;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+
+#tv:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
 }
 
 /* Social Media Buttons */
