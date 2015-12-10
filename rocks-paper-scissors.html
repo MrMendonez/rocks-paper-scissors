@@ -3,6 +3,7 @@
 <head>
   <title>Rock Paper Scissors Shoot!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/journal/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -22,7 +23,7 @@
   </header>
   <main class="container">
     <div class="panel panel-default">
-      <div class="panel-heading">Panel heading without title</div>
+      <div class="panel-heading"><i class="fa fa-hand-rock-o"></i> Rock, <i class="fa fa-hand-paper-o"></i> Paper, <i class="fa fa-hand-scissors-o"></i> Scissors... Shoot!</div>
       <div class="panel-body">
         <h3>Round: <span id="round-number"></span></h3>
         <h4 class="inline">Choose: </h4>
@@ -42,8 +43,8 @@
           <h4 id="you-win-or-lose-msg"></h4>
         </div>
         <div id="score-div">
-          <h4>Your score: <span id="user-score">0</span></h4>
-          <h4>Computer score: <span id="computer-score">0</span></h4>
+          <h4>Your score: <span class="user-score">0</span></h4>
+          <h4>Computer score: <span class="computer-score">0</span></h4>
         </div>
       </div>
     </div>
@@ -86,17 +87,21 @@
       </div>
     </div>
   </aside>
-  <aside class="modal fade" id="winner-modal" role="dialog"  tabindex='-1'>
+  <aside class="modal fade" id="game-over-modal" role="dialog"  tabindex='-1'>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h4>Game Over</h4>
         </div>
         <div class = "modal-body text-center">
-          <h3>You Win!</h3>
+          <h4>Your Score: <span class="user-score"></span></h4>
+          <h4>Computer Score: <span class="computer-score"></span></h4>
+          <h4>Tied Games: <span id="tied-game-count"></span></h4>
+          <h3 id="won-lost-or-tied-msg"></h3>
         </div>
         <div class="modal-footer">
-          <a class="btn btn-default" data-dismiss="modal">Close</a>
+          <!-- <a id="retry-button" class="btn btn-primary" data-dismiss="modal">Retry</a> -->
+          <a class="btn btn-default" data-dismiss="modal">Retry</a>
         </div>
       </div>
     </div>

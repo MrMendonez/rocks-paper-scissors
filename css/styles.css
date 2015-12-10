@@ -1,5 +1,9 @@
 /* Styles for Rocks Paper Scissors game */
 
+*, html, body, h1, h2, h3, h4, h5, p {
+  font-family: "Russo One";
+}
+
 .inline {
   display: inline;
 }
