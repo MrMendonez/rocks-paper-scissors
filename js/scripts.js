@@ -47,7 +47,6 @@ $(document).ready(function(){
         $(".computer-score").html(computerScore);
       })
     }
-
   });
 
   var compare = function(choice1, choice2) {
