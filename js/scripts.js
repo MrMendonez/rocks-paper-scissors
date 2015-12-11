@@ -22,6 +22,13 @@ $(document).ready(function(){
         .removeClass("btn-default")
         .attr("data-status", "on");
       bindControls();
+    } else {
+      $(this)
+        .html("Start")
+        .addClass("btn-default")
+        .removeClass("btn-success")
+        .attr("data-status", "off");
+      $(".btn-choices").off();
     }
   })
 
