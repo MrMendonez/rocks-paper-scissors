@@ -12,42 +12,58 @@ window.rps = {
 $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
-  $(document).on('click', "#rock-button, #paper-button, #scissors-button", function(){
+  $(".btn-choices").off();
 
-    var myRandomNumber = Math.floor(Math.random() * choices.length);
-    var computerChoice = choices[myRandomNumber];
-
-    var userChoice = $(this).data('choice')
-    compare(userChoice, computerChoice);
-
-    $('#computers-choice').html(computerChoice);
-    $('#users-choice').html(userChoice);
-
-    rps.gameState.round++;
-    $("#round-number").html(rps.gameState.round);
-    if (rps.gameState.round === 5){
-      if (rps.gameState.userScore > rps.gameState.computerScore) {
-        $("#won-lost-or-tied-msg").html("You won!");
-      } else if (rps.gameState.computerScore > rps.gameState.userScore) {
-        $("#won-lost-or-tied-msg").html("You lost!");
-      } else {
-        $("#won-lost-or-tied-msg").html("Tied game!");
-      }
-      $("#game-over-modal").modal("show");
-      $("#game-over-modal").on('hidden.bs.modal', function (e) {
-        rps.gameState.round = 0;
-        rps.gameState.userScore = 0;
-        rps.gameState.computerScore = 0;
-        rps.gameState.tiedGameCount = 0;
-        $("#round-number").html(rps.gameState.round);
-        $(".user-score").html(rps.gameState.userScore);
-        $(".computer-score").html(rps.gameState.computerScore);
-      })
+  $("#start-button").on("click", function() {
+    if($(this).attr("data-status") === "off") {
+      $(this)
+        .html("Pause")
+        .addClass("btn-success")
+        .removeClass("btn-default")
+        .attr("data-status", "on");
+      bindControls();
     }
-  });
+  })
+
+  function bindControls() {
+    $(document).on("click", "#rock-button, #paper-button, #scissors-button", function(){
+
+      var myRandomNumber = Math.floor(Math.random() * choices.length);
+      var computerChoice = choices[myRandomNumber];
+
+      var userChoice = $(this).data('choice')
+      compare(userChoice, computerChoice);
+
+      $("#computers-choice").html(computerChoice);
+      $("#users-choice").html(userChoice);
+
+      rps.gameState.round++;
+      $("#round-number").html(rps.gameState.round);
+      if (rps.gameState.round === 5){
+        if (rps.gameState.userScore > rps.gameState.computerScore) {
+          $("#won-lost-or-tied-msg").html("You won!");
+        } else if (rps.gameState.computerScore > rps.gameState.userScore) {
+          $("#won-lost-or-tied-msg").html("You lost!");
+        } else {
+          $("#won-lost-or-tied-msg").html("Tied game!");
+        }
+        $("#game-over-modal").modal("show");
+        $("#game-over-modal").on("hidden.bs.modal", function (e) {
+          rps.gameState.round = 0;
+          rps.gameState.userScore = 0;
+          rps.gameState.computerScore = 0;
+          rps.gameState.tiedGameCount = 0;
+          $("#round-number").html(rps.gameState.round);
+          $(".tied-game-count").html(rps.gameState.tiedGameCount);
+          $(".user-score").html(rps.gameState.userScore);
+          $(".computer-score").html(rps.gameState.computerScore);
+        })
+      }
+    })
+  };
 
   var compare = function(choice1, choice2) {
-    var tieMsg = "The result is a tie!";
+    var tieMsg = "Tied!";
     var rockWins = "Rock wins!";
     var paperWins = "Paper wins!";
     var scissorsWins = "Scissors wins!";
@@ -57,21 +73,18 @@ $(document).ready(function(){
     if (choice1 === choice2) {
       rps.gameState.tiedGameCount++;
       $("#win-msg").html(tieMsg);
-      $("#tied-game-count").html(rps.gameState.tiedGameCount);
-      return tieMsg;
+      $(".tied-game-count").html(rps.gameState.tiedGameCount);
     } else if (choice1 === "Rock") {
       if (choice2 === "Scissors") {
         $("#win-msg").html(rockWins);
         $("#you-win-or-lose-msg").html(youWin);
         rps.gameState.userScore++;
         $(".user-score").html(rps.gameState.userScore);
-        return rockWins;
       } else {
         $("#win-msg").html(paperWins);
         $("#you-win-or-lose-msg").html(youLose);
         rps.gameState.computerScore++;
         $(".computer-score").html(rps.gameState.computerScore);
-        return paperWins;   
       }
     } else if (choice1 === "Paper") {
       if (choice2 === "Rock") {
@@ -79,13 +92,12 @@ $(document).ready(function(){
         $("#you-win-or-lose-msg").html(youWin);
         rps.gameState.userScore++;
         $(".user-score").html(rps.gameState.userScore);
-        return paperWins; 
+        // r
       } else {
         $("#win-msg").html(scissorsWins);
         $("#you-win-or-lose-msg").html(youLose);
         rps.gameState.computerScore++;
         $(".computer-score").html(rps.gameState.computerScore);
-        return scissorsWins;
       }
     } else {
       if (choice1 === "Scissors") {
@@ -94,13 +106,11 @@ $(document).ready(function(){
           $("#you-win-or-lose-msg").html(youWin);
           rps.gameState.userScore++;
           $(".user-score").html(rps.gameState.userScore);
-          return scissorsWins;
         } else {
           $("#win-msg").html(rockWins);
           $("#you-win-or-lose-msg").html(youLose);
           rps.gameState.computerScore++;
           $(".computer-score").html(rps.gameState.computerScore);
-          return rockWins;
         }
       }
     }
