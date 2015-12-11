@@ -1,0 +1,1 @@
+<?php require 'rock-paper-scissors.html' ;?>
