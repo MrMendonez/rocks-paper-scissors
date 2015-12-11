@@ -26,11 +26,10 @@
       <div class="panel-heading text-center"><i class="fa fa-hand-rock-o"></i> Rock, <i class="fa fa-hand-paper-o"></i> Paper, <i class="fa fa-hand-scissors-o"></i> Scissors... Shoot!</div>
       <div class="panel-body text-center">
         <h3>Round: <span id="round-number"></span></h3>
-        <div id="tv" class="center-block"></div>
         <h4 class="inline">Choose: </h4>
-        <button id="rock-button" data-choice="Rock" class="btn btn-primary"><i class="fa fa-hand-rock-o"></i> Rock</button>
-        <button id="paper-button" data-choice="Paper" class="btn btn-primary"><i class="fa fa-hand-paper-o"></i> Paper</button>
-        <button id="scissors-button" data-choice="Scissors" class="btn btn-primary"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
+        <button id="rock-button" data-choice="Rock" class="btn-choices btn btn-primary"><i class="fa fa-hand-rock-o"></i> Rock</button>
+        <button id="paper-button" data-choice="Paper" class="btn-choices btn btn-primary"><i class="fa fa-hand-paper-o"></i> Paper</button>
+        <button id="scissors-button" data-choice="Scissors" class="btn-choices btn btn-primary"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
         <div id="users-choice-div">
           <h4>You chose: <span id="users-choice"></span>
         </div>
@@ -50,6 +49,25 @@
       </div>
     </div>
   </main>
+  <aside class="modal fade" id="game-over-modal" role="dialog"  tabindex='-1'>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Game Over</h4>
+        </div>
+        <div class = "modal-body text-center">
+          <h4>Your Score: <span class="user-score"></span></h4>
+          <h4>Computer Score: <span class="computer-score"></span></h4>
+          <h4>Tied Games: <span id="tied-game-count"></span></h4>
+          <h3 id="won-lost-or-tied-msg"></h3>
+        </div>
+        <div class="modal-footer">
+          <!-- <a id="retry-button" class="btn btn-primary" data-dismiss="modal">Retry</a> -->
+          <a class="btn btn-default" data-dismiss="modal">Retry</a>
+        </div>
+      </div>
+    </div>
+  </aside>
   <footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
     <div class ="container">
       <div class="collapse navbar-collapse navHeaderCollapse">
@@ -88,27 +106,11 @@
       </div>
     </div>
   </aside>
-  <aside class="modal fade" id="game-over-modal" role="dialog"  tabindex='-1'>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4>Game Over</h4>
-        </div>
-        <div class = "modal-body text-center">
-          <h4>Your Score: <span class="user-score"></span></h4>
-          <h4>Computer Score: <span class="computer-score"></span></h4>
-          <h4>Tied Games: <span id="tied-game-count"></span></h4>
-          <h3 id="won-lost-or-tied-msg"></h3>
-        </div>
-        <div class="modal-footer">
-          <!-- <a id="retry-button" class="btn btn-primary" data-dismiss="modal">Retry</a> -->
-          <a class="btn btn-default" data-dismiss="modal">Retry</a>
-        </div>
-      </div>
-    </div>
-  </aside>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/randomString.js"></script>
+  <script type="text/javascript" src="js/scoreTracker.js"></script>
+  <script type="text/javascript" src="js/programmingLogic.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

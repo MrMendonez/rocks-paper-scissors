@@ -1,50 +1,47 @@
 // Scripts for Rocks Paper Scissors game
 
+window.rps = {
+  gameState: {
+    userScore: 0,
+    computerScore: 0,
+    round: 0,
+    tiedGameCount: 0
+  }
+}
+
 $(document).ready(function(){
-  // var choices = ["Rock", "Paper", "Scissors"];
-  var round = 0;
-  var userScore = 0;
-  var computerScore = 0;
-  var tiedGameCount = 0;
+  var choices = ["Rock", "Paper", "Scissors"];
 
   $(document).on('click', "#rock-button, #paper-button, #scissors-button", function(){
 
-    var computerChoice = Math.random();
-    if (computerChoice < 0.34) {
-      computerChoice = "Rock";
-    } else if(computerChoice <= 0.67) {
-      computerChoice = "Paper";
-    } else {
-      computerChoice = "Scissors";
-    };
+    var myRandomNumber = Math.floor(Math.random() * choices.length);
+    var computerChoice = choices[myRandomNumber];
 
     var userChoice = $(this).data('choice')
-    console.log("You chose " + userChoice)
-    console.log("The computer chose " + computerChoice);
     compare(userChoice, computerChoice);
 
     $('#computers-choice').html(computerChoice);
     $('#users-choice').html(userChoice);
 
-    round++;
-    $("#round-number").html(round);
-    if (round === 5){
-      if (userScore > computerScore) {
+    rps.gameState.round++;
+    $("#round-number").html(rps.gameState.round);
+    if (rps.gameState.round === 5){
+      if (rps.gameState.userScore > rps.gameState.computerScore) {
         $("#won-lost-or-tied-msg").html("You won!");
-      } else if (computerScore > userScore) {
+      } else if (rps.gameState.computerScore > rps.gameState.userScore) {
         $("#won-lost-or-tied-msg").html("You lost!");
       } else {
         $("#won-lost-or-tied-msg").html("Tied game!");
       }
       $("#game-over-modal").modal("show");
       $("#game-over-modal").on('hidden.bs.modal', function (e) {
-        round = 0;
-        userScore = 0;
-        computerScore = 0;
-        tiedGameCount = 0;
-        $("#round-number").html(round);
-        $(".user-score").html(userScore);
-        $(".computer-score").html(computerScore);
+        rps.gameState.round = 0;
+        rps.gameState.userScore = 0;
+        rps.gameState.computerScore = 0;
+        rps.gameState.tiedGameCount = 0;
+        $("#round-number").html(rps.gameState.round);
+        $(".user-score").html(rps.gameState.userScore);
+        $(".computer-score").html(rps.gameState.computerScore);
       })
     }
   });
@@ -58,37 +55,36 @@ $(document).ready(function(){
     var youWin = "You win this round!"
 
     if (choice1 === choice2) {
+      rps.gameState.tiedGameCount++;
       $("#win-msg").html(tieMsg);
-      tiedGameCount++;
-      $("#tied-game-count").html(tiedGameCount);
-      console.log(tieMsg);
+      $("#tied-game-count").html(rps.gameState.tiedGameCount);
       return tieMsg;
     } else if (choice1 === "Rock") {
       if (choice2 === "Scissors") {
         $("#win-msg").html(rockWins);
         $("#you-win-or-lose-msg").html(youWin);
-        userScore++;
-        $(".user-score").html(userScore);
+        rps.gameState.userScore++;
+        $(".user-score").html(rps.gameState.userScore);
         return rockWins;
       } else {
         $("#win-msg").html(paperWins);
         $("#you-win-or-lose-msg").html(youLose);
-        computerScore++;
-        $(".computer-score").html(computerScore);
+        rps.gameState.computerScore++;
+        $(".computer-score").html(rps.gameState.computerScore);
         return paperWins;   
       }
     } else if (choice1 === "Paper") {
       if (choice2 === "Rock") {
         $("#win-msg").html(paperWins);
         $("#you-win-or-lose-msg").html(youWin);
-        userScore++;
-        $(".user-score").html(userScore);
+        rps.gameState.userScore++;
+        $(".user-score").html(rps.gameState.userScore);
         return paperWins; 
       } else {
         $("#win-msg").html(scissorsWins);
         $("#you-win-or-lose-msg").html(youLose);
-        computerScore++;
-        $(".computer-score").html(computerScore);
+        rps.gameState.computerScore++;
+        $(".computer-score").html(rps.gameState.computerScore);
         return scissorsWins;
       }
     } else {
@@ -96,17 +92,20 @@ $(document).ready(function(){
         if (choice2 === "Paper") {
           $("#win-msg").html(scissorsWins);
           $("#you-win-or-lose-msg").html(youWin);
-          userScore++;
-          $(".user-score").html(userScore);
+          rps.gameState.userScore++;
+          $(".user-score").html(rps.gameState.userScore);
           return scissorsWins;
         } else {
           $("#win-msg").html(rockWins);
           $("#you-win-or-lose-msg").html(youLose);
-          computerScore++;
-          $(".computer-score").html(computerScore);
+          rps.gameState.computerScore++;
+          $(".computer-score").html(rps.gameState.computerScore);
           return rockWins;
         }
       }
     }
   }
 });
+
+// To Do List:
+// When round = 0, 0 should not display on game. It should display as 'Round :' instead of 'Round: 0'. That's not how games behave.
