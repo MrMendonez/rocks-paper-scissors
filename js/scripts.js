@@ -28,7 +28,7 @@ $(document).ready(function(){
         .addClass("btn-danger")
         .removeClass("btn-success")
         .attr("data-status", "off");
-      $(".btn-choices").off();
+      $("#rock-button, #paper-button, #scissors-button").off();
     }
   })
 
