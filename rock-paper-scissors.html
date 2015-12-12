@@ -22,34 +22,45 @@
 
   </header>
   <main class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading text-center">Mike Tyson's</div>
+    <div id="main-panel" class="panel panel-default">
+      <div id="panel-title" class="panel-body text-center">Mike Tyson's</div>
       <div class="panel-body text-center">
-        <h3>Round: <span id="round-number"></span></h3>
-        <h4 class="inline">Choose: </h4>
-        <button id="rock-button" data-choice="Rock" class="btn btn-primary btn-choices"><i class="fa fa-hand-rock-o"></i> Rock</button>
-        <button id="paper-button" data-choice="Paper" class="btn btn-primary btn-choices"><i class="fa fa-hand-paper-o"></i> Paper</button>
-        <button id="scissors-button" data-choice="Scissors" class="btn btn-primary btn-choices"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
-        <div id="users-choice-div">
-          <h4>You chose: <span id="users-choice"></span>
+        <div class="jumbotron">
+          <h1 id="shoot-out" class="inline">Shoot-Out!!<span id="reg" class="inline">&reg;</span></h1>
         </div>
-        <div id="computers-choice-div">
-          <h4>Computer chose: <span id="computers-choice"></span>
+        <div class="new-game">
+          <h4 id="new"><span class="glove-color"><i class="fa fa-hand-rock-o fa-rotate-90"></i> <i class="fa fa-hand-paper-o fa-rotate-90"></i>  <i class="fa fa-hand-scissors-o fa-flip-horizontal"></i></span> <span id="new-font-color">NEW</span> <span class="glove-color"><i class="fa fa-hand-rock-o fa-rotate-270"></i> <i class="fa fa-hand-paper-o fa-rotate-270"></i>  <i class="fa fa-hand-scissors-o"></i></span><br />
+          <br />
+          <br />
+          <span class="white-font">&copy;1987 Nintendo</span></h4>
         </div>
-        <div id="win-msg-div">
-          <h4>Result: <span id="win-msg"></span></h4>
-        </div>
-        <div>
-          <h4 id="you-win-or-lose-msg"></h4>
-        </div>
-        <div id="score-div">
-          <h4>Tied Games: <span class="tied-game-count"></span></h4>
-          <h4>Your score: <span class="user-score">0</span></h4>
-          <h4>Computer score: <span class="computer-score">0</span></h4>
-        </div>
-        <div id="start-btn-div">
-          <button id="start-button" class="btn btn-danger btn-block" data-status="off">Start</button>
-        </div>
+        <div id="gameplay-panel" class="panel panel-default">
+          <h3>Round: <span id="round-number"></span></h3>
+          <h4 class="inline">Choose: </h4>
+          <button id="rock-button" data-choice="Rock" class="btn btn-primary btn-choices"><i class="fa fa-hand-rock-o"></i> Rock</button>
+          <button id="paper-button" data-choice="Paper" class="btn btn-primary btn-choices"><i class="fa fa-hand-paper-o"></i> Paper</button>
+          <button id="scissors-button" data-choice="Scissors" class="btn btn-primary btn-choices"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
+          <div id="users-choice-div">
+            <h4>You chose: <span id="users-choice"></span></h4>
+          </div>
+          <div id="computers-choice-div">
+            <h4>Computer chose: <span id="computers-choice"></span></h4>
+          </div>
+          <div id="win-msg-div">
+            <h4>Result: <span id="win-msg"></span></h4>
+          </div>
+          <div>
+            <h4 id="you-win-or-lose-msg"></h4>
+          </div>
+          <div id="score-div">
+            <h4>Tied Games: <span class="tied-game-count"></span></h4>
+            <h4>Your score: <span class="user-score">0</span></h4>
+            <h4>Computer score: <span class="computer-score">0</span></h4>
+          </div>
+          <div id="start-btn-div">
+            <button id="start-button" class="btn btn-danger btn-block" data-status="off">Start</button>
+          </div>
+        </div> <!-- gameplay-panel -->
       </div>
     </div>
   </main>

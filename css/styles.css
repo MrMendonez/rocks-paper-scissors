@@ -12,6 +12,36 @@
   color: red;
 }
 
+#panel-title {
+  color: #483DD5;
+}
+
+.jumbotron {
+  background-color: #483DD5;
+  color: #BE2C19;
+}
+
+#reg {
+  vertical-align: text-top;
+  font-size: medium;
+}
+
+#new-font-color {
+  color: #F2CFD2;
+}
+
+#main-panel {
+  background-color: black;
+}
+
+.white-font {
+  color: white;
+}
+
+.glove-color {
+  color: #BC2B1C;
+}
+
 /* Social Media Buttons */
 
 /* Linked-in */

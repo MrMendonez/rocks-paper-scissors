@@ -12,6 +12,8 @@ window.rps = {
 $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
+  $("#gameplay-panel").hide();
+
   $("#start-button").on("click", function() {
     if($(this).attr("data-status") === "off") {
       $(this)
