@@ -4,8 +4,21 @@
   font-family: 'Press Start 2P', cursive;
 }
 
+body {
+  background-color: black;
+}
+
 .inline {
   display: inline;
+}
+
+#gameplay-panel {
+  background-color: black;
+  border-style: none;
+}
+
+#main-panel {
+  border-style: none;
 }
 
 #you-win-or-lose-msg, #won-lost-or-tied-msg {
