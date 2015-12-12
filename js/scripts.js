@@ -12,23 +12,49 @@ window.rps = {
 $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
-  $("#start-button").on("click", function() {
-    if($(this).attr("data-status") === "off") {
+
+
+
+
+  // Temporary while working with gameplay-panel
+  // $("#start-game").hide();
+  $("#gameplay-panel").hide();
+  $("#pause-msg").hide();
+  newButtonAnimation();
+
+
+
+
+
+
+  $("#new-button").on("click", function() {
+    bindControls();
+    $("#start-game").slideUp(1000, function() {
+      $("#gameplay-panel").slideDown(1000);
+    })
+  })
+
+  $("#start").on("click", function() {
+    if($(this).attr("data-status") === "on") {
       $(this)
-        .html("Pause")
-        .addClass("btn-success")
-        .removeClass("btn-danger")
-        .attr("data-status", "on");
-      bindControls();
-    } else {
-      $(this)
-        .html("Start")
-        .addClass("btn-danger")
-        .removeClass("btn-success")
         .attr("data-status", "off");
       $(".btn-choices").off();
+      $("#pause-msg").slideDown();
+    } else {
+      $(this)
+        .attr("data-status", "on");
+      bindControls();
+      $("#pause-msg").slideUp();
     }
   })
+
+  function newButtonAnimation() {
+    $("#new-button").on("mouseenter", function() {
+      $(this).toggleClass("btn-success btn-danger");
+    }).on("mouseleave", function() {
+      $(this).toggleClass("btn-danger btn-success");
+    })
+  }
 
   function bindControls() {
     $(".btn-choices").on("click", function(){
