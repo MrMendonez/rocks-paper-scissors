@@ -20,15 +20,18 @@ $(document).ready(function(){
   // $("#start-game").hide();
   $("#gameplay-panel, #pause-msg, #round-screen").hide();
   $("#rock-screen, #paper-screen, #scissors-screen, #shoot-screen").hide();
-  $("#reveal-screen").hide();
+  $("#reveal-screen, #name-form").hide();
   newButtonAnimation();
 
 
+  $("#new-button").on("click", function(){
+    $("#name-form").slideDown();
+    $("input").focus();
+  })
 
-
-
-
-  $("#new-button").on("click", function() {
+  $("#submit-name-button").on("click", function(e) {
+    e.preventDefault();
+    var userName = $("input").val().trim();
     bindControls();
     $("#start-game").slideUp(1000, function() {
       $("#panel-title").slideUp(1000);
