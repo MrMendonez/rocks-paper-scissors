@@ -12,8 +12,20 @@ window.rps = {
 $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
-  $("#gameplay-panel").hide();
-  newButtonAnimation();
+
+
+
+
+  // Temporary while working with gameplay-panel
+  $("#start-game").hide();
+  // $("#gameplay-panel").hide();
+  // newButtonAnimation();
+
+
+
+
+
+
 
   $("#new-button").on("click", function() {
     $("#start-game").slideUp(1000, function() {
