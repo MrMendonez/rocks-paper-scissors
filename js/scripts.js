@@ -31,7 +31,7 @@ $(document).ready(function(){
   })
 
   function bindControls() {
-    $(document).on("click", ".btn-choices", function(){
+    $(".btn-choices").on("click", function(){
 
       var myRandomNumber = Math.floor(Math.random() * choices.length);
       var computerChoice = choices[myRandomNumber];
