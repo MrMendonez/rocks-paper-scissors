@@ -17,10 +17,10 @@ $(document).ready(function(){
 
 
   // Temporary while working with gameplay-panel
-  $("#start-game").hide();
-  // $("#gameplay-panel").hide();
-  // newButtonAnimation();
-
+  // $("#start-game").hide();
+  $("#gameplay-panel").hide();
+  $("#pause-msg").hide();
+  newButtonAnimation();
 
 
 
@@ -28,26 +28,23 @@ $(document).ready(function(){
 
 
   $("#new-button").on("click", function() {
+    bindControls();
     $("#start-game").slideUp(1000, function() {
       $("#gameplay-panel").slideDown(1000);
     })
   })
 
-  $("#start-button").on("click", function() {
-    if($(this).attr("data-status") === "off") {
+  $("#start").on("click", function() {
+    if($(this).attr("data-status") === "on") {
       $(this)
-        .html("Pause")
-        .addClass("btn-success")
-        .removeClass("btn-danger")
-        .attr("data-status", "on");
-      bindControls();
-    } else {
-      $(this)
-        .html("Start")
-        .addClass("btn-danger")
-        .removeClass("btn-success")
         .attr("data-status", "off");
       $(".btn-choices").off();
+      $("#pause-msg").slideDown();
+    } else {
+      $(this)
+        .attr("data-status", "on");
+      bindControls();
+      $("#pause-msg").slideUp();
     }
   })
 

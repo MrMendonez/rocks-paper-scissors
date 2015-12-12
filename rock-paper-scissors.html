@@ -6,7 +6,6 @@
   <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/social-media.css">
-  <link rel="stylesheet" type="text/css" href="css/hdtv.css">
   <link rel="stylesheet" type="text/css" href="css/nes-controller.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -41,23 +40,10 @@
           <br />
 
 
-          <i class="hdtv"><i></i><i></i><i></i><i></i></i>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
 
 
 
           <h3>Round: <span id="round-number"></span></h3>
-          <h4 class="inline">Choose: </h4>
-          <button id="rock-button" data-choice="Rock" class="btn btn-primary btn-choices"><i class="fa fa-hand-rock-o"></i> Rock</button>
-          <button id="paper-button" data-choice="Paper" class="btn btn-primary btn-choices"><i class="fa fa-hand-paper-o"></i> Paper</button>
-          <button id="scissors-button" data-choice="Scissors" class="btn btn-primary btn-choices"><i class="fa fa-hand-scissors-o"></i> Scissors</button>
           <div id="users-choice-div">
             <h4>You Chose: <span id="users-choice"></span></h4>
           </div>
@@ -75,6 +61,8 @@
             <h4>Your Score: <span class="user-score">0</span></h4>
             <h4>Computer Score: <span class="computer-score">0</span></h4>
           </div>
+          <h3 id="pause-msg">Game paused.<br />
+          Press start to play</h3>
           
 
 
@@ -83,11 +71,11 @@
 
            <!-- nes controller -->
   <div id="nes-controller" class="controller-background">
-    <i id="d-pad" class="fa fa-plus fa-5x"></i>
+    <i id="d-pad" data-choice="Rock" class="fa fa-plus fa-5x btn-choices"></i>
     <i id="select" class="fa fa-minus fa-3x"></i>
-    <i id="start" class="fa fa-minus fa-3x"></i>
-    <span class="a-button"></span>
-    <span class="b-button"></span>
+    <i id="start" data-status="on" class="fa fa-minus fa-3x"></i>
+    <i id="a-button" data-choice="Paper" class="fa fa-circle fa-3x btn-choices"></i>
+    <i id="b-button" data-choice="Scissors" class="fa fa-circle fa-3x btn-choices"></i>
   </div>
 
 
@@ -97,10 +85,6 @@
 
           <br />
           <br />
-
-          <div id="start-btn-div">
-            <button id="start-button" class="btn btn-danger btn-block" data-status="off">Start</button>
-          </div>
         </div> <!-- gameplay-panel -->
       </div>
     </div>
