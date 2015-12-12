@@ -19,13 +19,13 @@ $(document).ready(function(){
       $(this)
         .html("Pause")
         .addClass("btn-success")
-        .removeClass("btn-default")
+        .removeClass("btn-danger")
         .attr("data-status", "on");
       bindControls();
     } else {
       $(this)
         .html("Start")
-        .addClass("btn-default")
+        .addClass("btn-danger")
         .removeClass("btn-success")
         .attr("data-status", "off");
       $(".btn-choices").off();
