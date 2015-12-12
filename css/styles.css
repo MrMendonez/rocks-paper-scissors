@@ -55,7 +55,7 @@
   margin: 0 auto;
   position: relative;
 }
-#tv:before {
+/*#tv:before {
   content: '';
   position: absolute;
   top: 10%;
@@ -64,4 +64,4 @@
   left: -5%;
   background: inherit;
   border-radius: 5% / 50%;
-}
+}*/
