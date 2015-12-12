@@ -13,6 +13,13 @@ $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
   $("#gameplay-panel").hide();
+  newButtonAnimation();
+
+  $("#new-button").on("click", function() {
+    $("#start-game").slideUp(1000, function() {
+      $("#gameplay-panel").slideDown(1000);
+    })
+  })
 
   $("#start-button").on("click", function() {
     if($(this).attr("data-status") === "off") {
@@ -31,6 +38,14 @@ $(document).ready(function(){
       $(".btn-choices").off();
     }
   })
+
+  function newButtonAnimation() {
+    $("#new-button").on("mouseenter", function() {
+      $(this).toggleClass("btn-success btn-danger");
+    }).on("mouseleave", function() {
+      $(this).toggleClass("btn-danger btn-success");
+    })
+  }
 
   function bindControls() {
     $(".btn-choices").on("click", function(){
