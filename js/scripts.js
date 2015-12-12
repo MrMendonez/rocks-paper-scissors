@@ -31,7 +31,10 @@ $(document).ready(function(){
   $("#new-button").on("click", function() {
     bindControls();
     $("#start-game").slideUp(1000, function() {
-      $("#gameplay-panel").slideDown(1000);
+      $("#panel-title").slideUp(1000);
+      $(".jumbotron").slideUp(1000, function() {
+        $("#gameplay-panel").slideDown(1000);
+      })
     })
   })
 
@@ -90,6 +93,7 @@ $(document).ready(function(){
       revealUserChoice();
       revealComputerChoice();
 
+      // Begin TV screen animations
       $("#choose-screen").slideUp(1000, function() {
         $("#round-screen").slideDown(1000).delay(500).hide(500, function() {
           $("#rock-screen").slideDown(1000).delay(500).hide(500, function() {
