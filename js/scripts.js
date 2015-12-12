@@ -18,8 +18,9 @@ $(document).ready(function(){
 
   // Temporary while working with gameplay-panel
   // $("#start-game").hide();
-  $("#gameplay-panel").hide();
-  $("#pause-msg").hide();
+  $("#gameplay-panel, #pause-msg, #round-screen").hide();
+  $("#rock-screen, #paper-screen, #scissors-screen, #shoot-screen").hide();
+  $("#reveal-screen").hide();
   newButtonAnimation();
 
 
@@ -63,10 +64,51 @@ $(document).ready(function(){
       var computerChoice = choices[myRandomNumber];
 
       var userChoice = $(this).data('choice')
+      $("#reveal-screen").hide(); // Hide the last screen of the round
       compare(userChoice, computerChoice);
 
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
+      function revealUserChoice() {
+        if (userChoice === "Rock") {
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+        } else if(userChoice === "Paper") {
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+        } else {
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o");
+        }
+      };
+      function revealComputerChoice() {
+        if (computerChoice === "Rock") {
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+        } else if(computerChoice === "Paper") {
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+        } else {
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o");
+        }
+      };
+      revealUserChoice();
+      revealComputerChoice();
+
+      $("#choose-screen").slideUp(1000, function() {
+        $("#round-screen").slideDown(1000).delay(500).hide(500, function() {
+          $("#rock-screen").slideDown(1000).delay(500).hide(500, function() {
+            $("#paper-screen").slideDown(1000).delay(500).hide(500, function() {
+              $("#scissors-screen").slideDown(1000).delay(500).hide(500, function() {
+                $("#shoot-screen").slideDown(1000).hide(function() {
+                  $("#reveal-screen").show();
+                });
+              })
+            })
+          })
+        })
+      });
+
+
+
+
+
+      
 
       rps.gameState.round++;
       $("#round-number").html(rps.gameState.round);
