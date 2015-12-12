@@ -31,7 +31,7 @@ $(document).ready(function(){
   })
 
   function bindControls() {
-    $(document).on("click", "#rock-button, #paper-button, #scissors-button", function(){
+    $(document).on("click", ".btn-choices", function(){
 
       var myRandomNumber = Math.floor(Math.random() * choices.length);
       var computerChoice = choices[myRandomNumber];
