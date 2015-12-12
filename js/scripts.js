@@ -12,8 +12,6 @@ window.rps = {
 $(document).ready(function(){
   var choices = ["Rock", "Paper", "Scissors"];
 
-  $(".btn-choices").off();
-
   $("#start-button").on("click", function() {
     if($(this).attr("data-status") === "off") {
       $(this)
@@ -28,7 +26,7 @@ $(document).ready(function(){
         .addClass("btn-danger")
         .removeClass("btn-success")
         .attr("data-status", "off");
-      $("#rock-button, #paper-button, #scissors-button").off();
+      $(".btn-choices").off();
     }
   })
 
