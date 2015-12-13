@@ -28,7 +28,7 @@ $(document).ready(function(){
   $("#game-over-screen").hide();
 
   function newButtonAnimation() {
-    $("#new-button").on("mouseenter", function() {
+    $("#new-button, #submit-name-button").on("mouseenter", function() {
       $(this).toggleClass("btn-success btn-danger");
     }).on("mouseleave", function() {
       $(this).toggleClass("btn-danger btn-success");
