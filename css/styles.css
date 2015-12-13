@@ -21,7 +21,7 @@ body {
   border-style: none;
 }
 
-#you-win-or-lose-msg, #won-lost-or-tied-msg {
+#won-lost-or-tied-msg {
   color: red;
 }
 
