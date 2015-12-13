@@ -114,7 +114,7 @@ $(document).ready(function(){
             $("#paper-screen").show(500).delay(500).hide(500, function() {
               $("#scissors-screen").show(500).delay(500).hide(500, function() {
                 $("#shoot-screen").show(500).delay(500).hide(500, function() {
-                  $("#reveal-screen").fadeIn(1000).delay(500).fadeOut(500, function() {
+                  $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(500, function() {
                     $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(500, function() {
                       $("#choose-screen").slideDown(500, function() {
                         bindControls(this); // Allows RPS buttons to bind.

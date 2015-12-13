@@ -55,6 +55,14 @@ body {
   color: #BC2B1C;
 }
 
+.align-left {
+  text-align: right;
+}
+
+.smaller-font {
+  font-size: 75%;
+}
+
 #tv {
   position: relative;
   width: 300px;
