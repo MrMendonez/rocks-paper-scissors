@@ -4,7 +4,7 @@ window.rps = {
   gameState: {
     userScore: 0,
     computerScore: 0,
-    round: 0,
+    round: 1,
     tiedGameCount: 0
   }
 }
@@ -22,7 +22,7 @@ $(document).ready(function(){
   var tiedMike  = "You tied Mike Tyson"
 
   // Hide msgs
-  $("#gameplay-panel, #pause-screen, #round-screen").hide();
+  $("#gameplay-panel, #pause-screen").hide();
   $("#rock-screen, #paper-screen, #scissors-screen, #shoot-screen").hide();
   $("#reveal-screen, #name-form-div, #end-of-round-screen").hide();
   $("#game-over-screen").hide();
@@ -54,7 +54,7 @@ $(document).ready(function(){
     $(".username-placeholder").html(userName);
     bindControls(); // Allow buttons to become active
     // Hide Welcome screens and reveals gameplay panel
-    $("#name-form-div").slideUp(1000, function() {
+    $("#name-form-div").slideUp(function() {
       $("#gameplay-panel").slideDown(1000);
     })
   })
@@ -112,64 +112,66 @@ $(document).ready(function(){
 
       // Begin TV screen animations
       $(".btn-choices").off();
-      $("#choose-screen").hide(500, function() {
-        $("#round-screen").slideDown(1000).delay(750).hide(500, function() {
-          $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
-          $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
-          $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
-          $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
-            $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(500, function() {
-              $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(500, function() {
-                if (rps.gameState.round === 5) {
-                  $("#game-over-screen").fadeIn(500, function(){
-                    $(".btn-choices").on("click", function() {
-                      $("#game-over-screen").hide();
-                      rps.gameState.round = 0;
-                      rps.gameState.userScore = 0;
-                      rps.gameState.computerScore = 0;
-                      rps.gameState.tiedGameCount = 0;
-                      $("#round-number").html(rps.gameState.round);
-                      $(".tied-game-count").html(rps.gameState.tiedGameCount);
-                      $(".user-score").html(rps.gameState.userScore);
-                      $(".computer-score").html(rps.gameState.computerScore);
-                      $("#choose-screen").slideDown(500, function() {
-                        bindControls(this); // Allows RPS buttons to bind.
-                      })
+      $("#choose-screen").hide(function() {
+        $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
+        $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
+        $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
+        $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
+          $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(function() {
+            $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(function() {
+              if (rps.gameState.round === 5) {
+                $("#game-over-screen").fadeIn(500, function(){
+                  $(".btn-choices").on("click", function() {
+                    $("#game-over-screen").hide();
+                    rps.gameState.round = 1;
+                    rps.gameState.userScore = 0;
+                    rps.gameState.computerScore = 0;
+                    rps.gameState.tiedGameCount = 0;
+                    $("#round-number").html(rps.gameState.round);
+                    $(".tied-game-count").html(rps.gameState.tiedGameCount);
+                    $(".user-score").html(rps.gameState.userScore);
+                    $(".computer-score").html(rps.gameState.computerScore);
+                    roundCounter();
+                    $("#choose-screen").slideDown(500, function() {
+                      bindControls(this); // Allows RPS buttons to bind.
                     })
-                  });
-                } else {
-                  $("#choose-screen").slideDown(500, function() {
-                    bindControls(this); // Allows RPS buttons to bind.
                   })
-                }
-              })
+                });
+              } else {
+                roundCounter();
+                $("#choose-screen").slideDown(500, function() {
+                  bindControls(this); // Allows RPS buttons to bind.
+                })
+              }
             })
           })
         })
       }); // End TV screen animations
 
-      rps.gameState.round++;
-      $("#round-number").html(rps.gameState.round);
-      if (rps.gameState.round === 5){
-        if (rps.gameState.userScore > rps.gameState.computerScore) {
-          $(".won-lost-or-tied-series").html(beatMike);
-        } else if (rps.gameState.computerScore > rps.gameState.userScore) {
-          $(".won-lost-or-tied-series").html(mikeBeatYou);
-        } else {
-          $(".won-lost-or-tied-series").html(tiedMike);
+      function roundCounter() {
+        rps.gameState.round++;
+        $("#round-number").html(rps.gameState.round);
+        if (rps.gameState.round === 5){
+          if (rps.gameState.userScore > rps.gameState.computerScore) {
+            $(".won-lost-or-tied-series").html(beatMike);
+          } else if (rps.gameState.computerScore > rps.gameState.userScore) {
+            $(".won-lost-or-tied-series").html(mikeBeatYou);
+          } else {
+            $(".won-lost-or-tied-series").html(tiedMike);
+          }
+          $("#game-over-modal").modal("show");
+          $("#game-over-modal").on("hidden.bs.modal", function (e) {
+            rps.gameState.round = 0;
+            rps.gameState.userScore = 0;
+            rps.gameState.computerScore = 0;
+            rps.gameState.tiedGameCount = 0;
+            $("#round-number").html(rps.gameState.round);
+            $(".tied-game-count").html(rps.gameState.tiedGameCount);
+            $(".user-score").html(rps.gameState.userScore);
+            $(".computer-score").html(rps.gameState.computerScore);
+          })
         }
-        $("#game-over-modal").modal("show");
-        $("#game-over-modal").on("hidden.bs.modal", function (e) {
-          rps.gameState.round = 0;
-          rps.gameState.userScore = 0;
-          rps.gameState.computerScore = 0;
-          rps.gameState.tiedGameCount = 0;
-          $("#round-number").html(rps.gameState.round);
-          $(".tied-game-count").html(rps.gameState.tiedGameCount);
-          $(".user-score").html(rps.gameState.userScore);
-          $(".computer-score").html(rps.gameState.computerScore);
-        })
-      }
+      } // End function roundConter
     })
   }; // End bindControls function
 
