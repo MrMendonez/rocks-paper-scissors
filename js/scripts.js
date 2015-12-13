@@ -123,7 +123,7 @@ $(document).ready(function(){
                 $("#game-over-screen").fadeIn(500, function(){
                   $(".btn-choices").on("click", function() {
                     $("#game-over-screen").hide();
-                    rps.gameState.round = 1;
+                    rps.gameState.round = 0;
                     rps.gameState.userScore = 0;
                     rps.gameState.computerScore = 0;
                     rps.gameState.tiedGameCount = 0;
