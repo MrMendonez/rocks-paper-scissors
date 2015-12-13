@@ -24,7 +24,7 @@ $(document).ready(function(){
   // Hide msgs
   $("#gameplay-panel, #pause-screen, #round-screen").hide();
   $("#rock-screen, #paper-screen, #scissors-screen, #shoot-screen").hide();
-  $("#reveal-screen, #name-form, #end-of-round-screen").hide();
+  $("#reveal-screen, #name-form-div, #end-of-round-screen").hide();
   $("#game-over-screen").hide();
 
   function newButtonAnimation() {
@@ -35,11 +35,14 @@ $(document).ready(function(){
     })
   }
 
-  newButtonAnimation(); // Makes 'New' button change color on mouseover
+  newButtonAnimation(); // Makes 'New' & 'Play' button change color on mouseover
 
   $("#new-button").on("click", function(){
-    $("#name-form").slideDown(); // Input name form appears
-    $("input").focus();
+    $("#panel-title").fadeOut(1000);
+    $("#jumbotron-and-new-button").slideUp(1000, function() {
+      $("#name-form-div").slideDown(); // Input name form appears
+      $("input").focus();
+    })
   })
 
   $("#submit-name-button").on("click", function(e) {
@@ -51,11 +54,8 @@ $(document).ready(function(){
     $(".username-placeholder").html(userName);
     bindControls(); // Allow buttons to become active
     // Hide Welcome screens and reveals gameplay panel
-    $("#start-game").slideUp(1000, function() {
-      $("#panel-title").slideUp(1000);
-      $(".jumbotron").slideUp(1000, function() {
-        $("#gameplay-panel").slideDown(1000);
-      })
+    $("#name-form-div").slideUp(1000, function() {
+      $("#gameplay-panel").slideDown(1000);
     })
   })
 
@@ -89,21 +89,21 @@ $(document).ready(function(){
 
       function revealUserChoice() {
         if (userChoice === "Rock") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal");
         } else if(userChoice === "Paper") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal");
         } else {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90");
         }
       };
 
       function revealComputerChoice() {
         if (computerChoice === "Rock") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-paper-o fa-hand-scissors-o");
         } else if(computerChoice === "Paper") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-rock-o fa-hand-scissors-o");
         } else {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
         }
       };
 
@@ -114,10 +114,10 @@ $(document).ready(function(){
       $(".btn-choices").off();
       $("#choose-screen").hide(500, function() {
         $("#round-screen").slideDown(1000).delay(750).hide(500, function() {
-          $("#rock-screen").slideDown(500).delay(2500).fadeOut(500);
-          $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(500);
-          $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(500);
-          $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(500, function() {
+          $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
+          $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
+          $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
+          $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
             $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(500, function() {
               $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(500, function() {
                 if (rps.gameState.round === 5) {
@@ -146,7 +146,7 @@ $(document).ready(function(){
             })
           })
         })
-      });
+      }); // End TV screen animations
 
       rps.gameState.round++;
       $("#round-number").html(rps.gameState.round);
