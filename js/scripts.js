@@ -38,11 +38,11 @@ $(document).ready(function(){
   newButtonAnimation(); // Makes 'New' & 'Play' button change color on mouseover
 
   $("#new-button").on("click", function(){
-    $("#panel-title").fadeOut(1000);
-    $("#jumbotron-and-new-button").slideUp(1000, function() {
-      $("#name-form-div").slideDown(); // Input name form appears
+    $("#jumbotron-and-new-button").slideUp(function() {
+      $("#name-form-div").delay(100).slideDown(); // Input name form appears
       $("input").focus();
     })
+    $("#panel-title").slideUp();
   })
 
   $("#submit-name-button").on("click", function(e) {
