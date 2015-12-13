@@ -16,6 +16,7 @@ body {
   background: -webkit-linear-gradient(#F4981C, #B63020);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 #gameplay-panel {
