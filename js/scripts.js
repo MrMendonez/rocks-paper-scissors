@@ -223,7 +223,22 @@ $(document).ready(function(){
       }
     }
   }
-});
+
+  function buttonAnimations(){
+    $(document).on("mouseenter", ".btn-choices", function(){
+      $(this).addClass("pulse");
+    });
+    $(document).on("mouseleave", ".btn-choices", function(){
+      $(this).removeClass("pulse expandOpen");
+    });
+    $(document).on("click", ".btn-choices", function(){
+      $(this).addClass("expandOpen");
+      $(this).removeClass("pulse");
+    });
+  }
+  buttonAnimations();
+
+}); // End (document).ready function(){};
 
 // To Do List:
 // Figure out how to pause animations if someone clicks start in the middle of the animations.
