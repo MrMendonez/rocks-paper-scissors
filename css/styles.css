@@ -12,6 +12,12 @@ body {
   display: inline;
 }
 
+#shoot-out {
+  background: -webkit-linear-gradient(#F4981C, #B63020);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 #gameplay-panel {
   background-color: black;
   border-style: none;
