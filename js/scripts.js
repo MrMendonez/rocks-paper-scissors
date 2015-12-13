@@ -111,10 +111,10 @@ $(document).ready(function(){
       $(".btn-choices").off();
       $("#choose-screen").hide(500, function() {
         $("#round-screen").slideDown(1000).delay(1000).hide(500, function() {
-          $("#rock-screen").slideDown(500).delay(4000).slideUp(500);
-          $("#paper-screen").delay(750).slideDown(500).delay(3500).slideUp(500);
-          $("#scissors-screen").delay(1250).slideDown(500).delay(3000).slideUp(500);
-          $("#shoot-screen").delay(1750).slideDown(500).delay(2500).slideUp(500, function() {
+          $("#rock-screen").slideDown(500).delay(2750).fadeOut(500);
+          $("#paper-screen").delay(750).slideDown(500).delay(2000).fadeOut(500);
+          $("#scissors-screen").delay(1500).slideDown(500).delay(1250).fadeOut(500);
+          $("#shoot-screen").delay(2250).slideDown(500).delay(500).fadeOut(500, function() {
             $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(500, function() {
               $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(500, function() {
 
