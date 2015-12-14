@@ -61,19 +61,19 @@ $(document).ready(function(){
   })
 
   // Pause game on start
-  $("#start").on("click", function() {
-    if($(this).attr("data-status") === "on") {
-      $(this)
-        .attr("data-status", "off");
-      $(".btn-choices").off();
-      $("#pause-screen").slideDown();
-    } else {
-      $(this)
-        .attr("data-status", "on");
-      bindControls();
-      $("#pause-screen").slideUp();
-    }
-  })
+  // $("#start").on("click", function() {
+  //   if($(this).attr("data-status") === "on") {
+  //     $(this)
+  //       .attr("data-status", "off");
+  //     $(".btn-choices").off();
+  //     $("#pause-screen").slideDown();
+  //   } else {
+  //     $(this)
+  //       .attr("data-status", "on");
+  //     bindControls();
+  //     $("#pause-screen").slideUp();
+  //   }
+  // })
 
   function bindControls() {
     $(".btn-choices").on("click", function(){
@@ -192,17 +192,17 @@ $(document).ready(function(){
           } else {
             $(".won-lost-or-tied-series").html(tiedMike);
           }
-          $("#game-over-modal").modal("show");
-          $("#game-over-modal").on("hidden.bs.modal", function (e) {
-            rps.gameState.round = 0;
-            rps.gameState.userScore = 0;
-            rps.gameState.computerScore = 0;
-            rps.gameState.tiedGameCount = 0;
-            $(".round-number").html(rps.gameState.round);
-            $(".tied-game-count").html(rps.gameState.tiedGameCount);
-            $(".user-score").html(rps.gameState.userScore);
-            $(".computer-score").html(rps.gameState.computerScore);
-          })
+          // $("#game-over-modal").modal("show");
+          // $("#game-over-modal").on("hidden.bs.modal", function (e) {
+          //   rps.gameState.round = 0;
+          //   rps.gameState.userScore = 0;
+          //   rps.gameState.computerScore = 0;
+          //   rps.gameState.tiedGameCount = 0;
+          //   $(".round-number").html(rps.gameState.round);
+          //   $(".tied-game-count").html(rps.gameState.tiedGameCount);
+          //   $(".user-score").html(rps.gameState.userScore);
+          //   $(".computer-score").html(rps.gameState.computerScore);
+          // })
         }
       } // End function roundConter
     })
@@ -257,7 +257,7 @@ $(document).ready(function(){
     }
   }
 
-  function buttonAnimations(){
+  function buttonAnimations() {
     if ($("#tv").attr("data-animationstatus") === "not-playing") {
       $(document).on("mouseenter", ".btn-choices", function(){
         $(this).addClass("pulse");
@@ -276,6 +276,21 @@ $(document).ready(function(){
     }
   }
   buttonAnimations();
+
+  // Show credits modal when pressing 'select' button
+  function creditsModal() {
+    $("#select, #start").on("click", function() {
+      $(this).addClass("expandOpen");
+      $("#credits-modal").modal("show");
+    })
+    $("#select, #start").on("mouseenter", function() {
+      $(this).addClass("pulse");
+    })
+    $("#select, #start").on("mouseleave", function() {
+      $(this).removeClass("pulse");
+    })
+  }
+  creditsModal();
 
 }); // End (document).ready function(){};
 
