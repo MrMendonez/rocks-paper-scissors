@@ -139,12 +139,12 @@ $(document).ready(function(){
         $("#tv").attr("data-animationstatus", "playing");
       }
       $("#choose-screen").hide(function() {
-        $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
-        $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
-        $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
-        $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
-          $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(function() {
-            $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(function() {
+        $("#rock-screen").slideDown(250).delay(2500).fadeOut(250);
+        $("#paper-screen").delay(750).slideDown(250).delay(1750).fadeOut(250);
+        $("#scissors-screen").delay(1500).slideDown(250).delay(1000).fadeOut(250);
+        $("#shoot-screen").delay(2250).slideDown(250).delay(250).fadeOut(250, function() {
+          $("#reveal-screen").fadeIn(1000).delay(1250).fadeOut(function() {
+            $("#end-of-round-screen").fadeIn(1000).delay(500).fadeOut(function() {
               if (rps.gameState.round === 5) {
                 $("#game-over-screen").fadeIn(500, function(){
                   $("#credits").addClass("pullUp").show();
