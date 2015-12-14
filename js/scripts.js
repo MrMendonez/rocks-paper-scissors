@@ -113,6 +113,8 @@ $(document).ready(function(){
 
 
 
+
+
       // $("#start").on("click", function() {
       //   if($(this).attr("data-status") === "on") {
       //     $(this)
@@ -161,6 +163,9 @@ $(document).ready(function(){
                       $("#scoreboard").addClass("pullUp").show();
                       bindControls(this); // Allows RPS buttons to bind.
                     })
+                  })
+                  $("#play-again-button").on("click", function(){
+                    $("#credits").addClass("slideUp").hide();
                   })
                 });
               } else {
