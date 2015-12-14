@@ -46,8 +46,8 @@ body {
   font-size: medium;
 }
 
-#new-font-color {
-  color: #F2CFD2;
+.blue-font {
+  color: #483DD5;
 }
 
 #main-panel {
@@ -83,7 +83,7 @@ body {
   margin: 0 auto;
 }
 
-#scoreboard, #credits {
+#scoreboard {
   position: relative;
   width: 300px;
   height: 175px;
