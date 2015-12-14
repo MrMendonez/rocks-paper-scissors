@@ -20,12 +20,13 @@ $(document).ready(function(){
   var beatMike = "You beat Mike Tyson!"
   var mikeBeatYou = "Mike Tyson beat you!"
   var tiedMike  = "You tied Mike Tyson"
+  var fbase = new Firebase("https://burning-torch-7924.firebaseio.com/");
 
   // Hide msgs
   $("#gameplay-panel, #pause-screen").hide();
   $("#rock-screen, #paper-screen, #scissors-screen, #shoot-screen").hide();
   $("#reveal-screen, #name-form-div, #end-of-round-screen").hide();
-  $("#game-over-screen").hide();
+  $("#game-over-screen, #credits").hide();
 
   function newButtonAnimation() {
     $("#new-button, #submit-name-button").on("mouseenter", function() {
@@ -110,8 +111,31 @@ $(document).ready(function(){
       revealUserChoice();
       revealComputerChoice();
 
+
+
+      // $("#start").on("click", function() {
+      //   if($(this).attr("data-status") === "on") {
+      //     $(this)
+      //       .attr("data-status", "off");
+      //     $(".btn-choices").off();
+      //     $("#pause-screen").slideDown();
+      //   } else {
+      //     $(this)
+      //       .attr("data-status", "on");
+      //     bindControls();
+      //     $("#pause-screen").slideUp();
+      //   }
+      // })
+
+
+
+
       // Begin TV screen animations
-      $(".btn-choices").off();
+      $(".btn-choices").off(); // Control buttons are disabled during tv animations
+      $("#scoreboard").addClass("pullDown").hide(); // Hide scoreboard
+      if ($("#tv").attr("data-animationstatus") === "not-playing") {
+        $("#tv").attr("data-animationstatus", "playing");
+      }
       $("#choose-screen").hide(function() {
         $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
         $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
@@ -121,18 +145,20 @@ $(document).ready(function(){
             $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(function() {
               if (rps.gameState.round === 5) {
                 $("#game-over-screen").fadeIn(500, function(){
+                  $("#credits").addClass("pullUp").show();
                   $(".btn-choices").on("click", function() {
                     $("#game-over-screen").hide();
                     rps.gameState.round = 0;
                     rps.gameState.userScore = 0;
                     rps.gameState.computerScore = 0;
                     rps.gameState.tiedGameCount = 0;
-                    $("#round-number").html(rps.gameState.round);
+                    $(".round-number").html(rps.gameState.round);
                     $(".tied-game-count").html(rps.gameState.tiedGameCount);
                     $(".user-score").html(rps.gameState.userScore);
                     $(".computer-score").html(rps.gameState.computerScore);
                     roundCounter();
                     $("#choose-screen").slideDown(500, function() {
+                      $("#scoreboard").addClass("pullUp").show();
                       bindControls(this); // Allows RPS buttons to bind.
                     })
                   })
@@ -140,6 +166,8 @@ $(document).ready(function(){
               } else {
                 roundCounter();
                 $("#choose-screen").slideDown(500, function() {
+                  $("#tv").attr("data-animationstatus", "not-playing");
+                  $("#scoreboard").addClass("pullUp").show(); // Reveal updated scoreboard
                   bindControls(this); // Allows RPS buttons to bind.
                 })
               }
@@ -150,7 +178,7 @@ $(document).ready(function(){
 
       function roundCounter() {
         rps.gameState.round++;
-        $("#round-number").html(rps.gameState.round);
+        $(".round-number").html(rps.gameState.round);
         if (rps.gameState.round === 5){
           if (rps.gameState.userScore > rps.gameState.computerScore) {
             $(".won-lost-or-tied-series").html(beatMike);
@@ -165,7 +193,7 @@ $(document).ready(function(){
             rps.gameState.userScore = 0;
             rps.gameState.computerScore = 0;
             rps.gameState.tiedGameCount = 0;
-            $("#round-number").html(rps.gameState.round);
+            $(".round-number").html(rps.gameState.round);
             $(".tied-game-count").html(rps.gameState.tiedGameCount);
             $(".user-score").html(rps.gameState.userScore);
             $(".computer-score").html(rps.gameState.computerScore);
@@ -225,22 +253,29 @@ $(document).ready(function(){
   }
 
   function buttonAnimations(){
-    $(document).on("mouseenter", ".btn-choices", function(){
-      $(this).addClass("pulse");
-    });
-    $(document).on("mouseleave", ".btn-choices", function(){
-      $(this).removeClass("pulse expandOpen");
-    });
-    $(document).on("click", ".btn-choices", function(){
-      $(this).addClass("expandOpen");
-      $(this).removeClass("pulse");
-    });
+    if ($("#tv").attr("data-animationstatus") === "not-playing") {
+      $(document).on("mouseenter", ".btn-choices", function(){
+        $(this).addClass("pulse");
+      });
+      $(document).on("mouseleave", ".btn-choices", function(){
+        $(this).removeClass("pulse expandOpen");
+      });
+      $(document).on("click", ".btn-choices", function(){
+        $(this).addClass("expandOpen");
+        $(this).removeClass("pulse");
+      });
+    } else { // When animation is playing
+      $(document).on("mouseenter", ".btn-choices", function(){
+        $(".btn-choices").removeClass("pulse expandOpen");
+      })
+    }
   }
   buttonAnimations();
 
 }); // End (document).ready function(){};
 
 // To Do List:
+// Figure out how to stop css3 button animations during tv animation
 // Figure out how to pause animations if someone clicks start in the middle of the animations.
 // Make status modal when someone presses select
 // Make game over sequence

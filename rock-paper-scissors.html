@@ -47,10 +47,10 @@
 
 
 
-          <div id="tv">
+          <div id="tv" data-animationstatus="not-playing">
             <div id="choose-screen">
               <br />
-              <p>Round: <span id="round-number">1</span></p>
+              <p>Round: <span class="round-number">1</span></p>
               <i class="fa fa-hand-rock-o fa-5x"></i> <i class="fa fa-hand-paper-o fa-5x"></i>  <i class="fa fa-hand-scissors-o fa-5x"></i><br />
               <i class="fa fa-question fa-5x"></i>
             </div>
@@ -84,15 +84,30 @@
           </div> <!-- end tv screen -->
           <br />
            <!-- nes controller -->
-  <div id="nes-controller" class="controller-background">
-    <i id="d-pad" data-choice="Rock" class="fa fa-plus fa-5x btn-choices"></i>
-    <i id="select" class="fa fa-minus fa-3x"></i>
-    <i id="start" data-status="on" class="fa fa-minus fa-3x"></i>
-    <i id="a-button" data-choice="Paper" class="fa fa-circle fa-3x btn-choices"></i>
-    <i id="b-button" data-choice="Scissors" class="fa fa-circle fa-3x btn-choices"></i>
-  </div>
+          <div id="nes-controller" class="controller-background">
+            <i id="d-pad" data-choice="Rock" class="fa fa-plus fa-5x btn-choices"></i>
+            <i id="select" class="fa fa-minus fa-3x"></i>
+            <i id="start" data-status="on" class="fa fa-minus fa-3x"></i>
+            <i id="a-button" data-choice="Paper" class="fa fa-circle fa-3x btn-choices"></i>
+            <i id="b-button" data-choice="Scissors" class="fa fa-circle fa-3x btn-choices"></i>
+          </div>
           <br />
           <br />
+          <div id="scoreboard" class = "text-center">
+            <br />
+            <h4>Round: <span class="round-number">1</span></h4>
+            <h4><span class="username-placeholder"></span>: <span class="user-score">0</span></h4>
+            <h4>Mike Tyson: <span class="computer-score">0</span></h4>
+            <h4>Ties: <span class="tied-game-count">0</span></h4>
+            <!-- <h3 class="won-lost-or-tied-msg"></h3> -->
+          </div>
+          <div id="credits" class = "text-center">
+            <br />
+            <p>Credits</p>
+            <p>Inspired by Mike Tyson's Punchout</p>
+            <p>Game designed by <a href="https://darrylmendonez.herokuapp.com/" target="_blank">Darryl Mendonez</a></p>
+            <a href="https://secure-cliffs-8751.herokuapp.com/">Exit</a>
+          </div>
         </div> <!-- gameplay-panel -->
       </div>
     </div>
@@ -140,7 +155,7 @@
   </aside>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/toggleState.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
