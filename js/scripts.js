@@ -88,23 +88,42 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
+      var userChoice = $(this).data('choice')
+      $("#reveal-screen").hide(); // Hide the last screen of the round
+      compare(userChoice, computerChoice);
+
+      $("#computers-choice").html(computerChoice);
+      $("#users-choice").html(userChoice);
+
       function revealUserChoice() {
         if (userChoice === "Rock") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal").hide(function(){
+            $("#reveal-screen-user-choice").addClass("slideRight").show();
+          });
         } else if(userChoice === "Paper") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal").hide(function(){
+            $("#reveal-screen-user-choice").addClass("slideRight").show();
+          });
         } else {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90");
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90").hide(function(){
+            $("#reveal-screen-user-choice").addClass("slideRight").show();
+          });
         }
       };
 
       function revealComputerChoice() {
         if (computerChoice === "Rock") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-paper-o fa-hand-scissors-o").hide(function(){
+            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
+          });
         } else if(computerChoice === "Paper") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-rock-o fa-hand-scissors-o").hide(function(){
+            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
+          });
         } else {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270").hide(function(){
+            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
+          });
         }
       };
 
