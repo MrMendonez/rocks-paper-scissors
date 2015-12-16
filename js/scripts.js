@@ -55,25 +55,25 @@ $(document).ready(function(){
     $(".username-placeholder").html(userName);
     bindControls(); // Allow buttons to become active
     // Hide Welcome screens and reveals gameplay panel
-    $("#name-form-div, #nintendo-div").slideUp(function() {
+    $("#name-form-div").slideUp(function() {
       $("#gameplay-panel").slideDown(1000);
     })
   })
 
   // Pause game on start
-  $("#start").on("click", function() {
-    if($(this).attr("data-status") === "on") {
-      $(this)
-        .attr("data-status", "off");
-      $(".btn-choices").off();
-      $("#pause-screen").slideDown();
-    } else {
-      $(this)
-        .attr("data-status", "on");
-      bindControls();
-      $("#pause-screen").slideUp();
-    }
-  })
+  // $("#start").on("click", function() {
+  //   if($(this).attr("data-status") === "on") {
+  //     $(this)
+  //       .attr("data-status", "off");
+  //     $(".btn-choices").off();
+  //     $("#pause-screen").slideDown();
+  //   } else {
+  //     $(this)
+  //       .attr("data-status", "on");
+  //     bindControls();
+  //     $("#pause-screen").slideUp();
+  //   }
+  // })
 
   function bindControls() {
     $(".btn-choices").on("click", function(){
@@ -88,8 +88,6 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
-<<<<<<< Updated upstream
-=======
       var userChoice = $(this).data('choice')
       $("#reveal-screen").hide(); // Hide the last screen of the round
       compare(userChoice, computerChoice);
@@ -104,7 +102,6 @@ $(document).ready(function(){
       function slideLeftAnimation() {
         $("#reveal-screen-computer-choice").addClass("slideLeft");
       };
->>>>>>> Stashed changes
       function revealUserChoice() {
         if (userChoice === "Rock") {
           // rotate icon 90 degs
@@ -160,6 +157,8 @@ $(document).ready(function(){
 
 
 
+
+
       // $("#start").on("click", function() {
       //   if($(this).attr("data-status") === "on") {
       //     $(this)
@@ -184,12 +183,12 @@ $(document).ready(function(){
         $("#tv").attr("data-animationstatus", "playing");
       }
       $("#choose-screen").hide(function() {
-        $("#rock-screen").slideDown(500).delay(2500).fadeOut(250);
-        $("#paper-screen").delay(750).slideDown(500).delay(1750).fadeOut(250);
-        $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
-        $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
-          $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(function() {
-            $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(function() {
+        $("#rock-screen").slideDown(250).delay(2500).fadeOut(250);
+        $("#paper-screen").delay(750).slideDown(250).delay(1750).fadeOut(250);
+        $("#scissors-screen").delay(1500).slideDown(250).delay(1000).fadeOut(250);
+        $("#shoot-screen").delay(2250).slideDown(250).delay(250).fadeOut(250, function() {
+          $("#reveal-screen").fadeIn(1000).delay(1250).fadeOut(function() {
+            $("#end-of-round-screen").fadeIn(1000).delay(500).fadeOut(function() {
               if (rps.gameState.round === 5) {
                 $("#game-over-screen").fadeIn(500, function(){
                   $("#credits").addClass("pullUp").show();
@@ -209,14 +208,10 @@ $(document).ready(function(){
                       bindControls(this); // Allows RPS buttons to bind.
                     })
                   })
-<<<<<<< Updated upstream
-                });
-=======
                   $("#play-again-button").on("click", function(){
                     $("#credits").addClass("slideUp").hide();
                   })
                 })
->>>>>>> Stashed changes
               } else {
                 roundCounter();
                 $("#choose-screen").slideDown(500, function() {
@@ -241,17 +236,17 @@ $(document).ready(function(){
           } else {
             $(".won-lost-or-tied-series").html(tiedMike);
           }
-          $("#game-over-modal").modal("show");
-          $("#game-over-modal").on("hidden.bs.modal", function (e) {
-            rps.gameState.round = 0;
-            rps.gameState.userScore = 0;
-            rps.gameState.computerScore = 0;
-            rps.gameState.tiedGameCount = 0;
-            $(".round-number").html(rps.gameState.round);
-            $(".tied-game-count").html(rps.gameState.tiedGameCount);
-            $(".user-score").html(rps.gameState.userScore);
-            $(".computer-score").html(rps.gameState.computerScore);
-          })
+          // $("#game-over-modal").modal("show");
+          // $("#game-over-modal").on("hidden.bs.modal", function (e) {
+          //   rps.gameState.round = 0;
+          //   rps.gameState.userScore = 0;
+          //   rps.gameState.computerScore = 0;
+          //   rps.gameState.tiedGameCount = 0;
+          //   $(".round-number").html(rps.gameState.round);
+          //   $(".tied-game-count").html(rps.gameState.tiedGameCount);
+          //   $(".user-score").html(rps.gameState.userScore);
+          //   $(".computer-score").html(rps.gameState.computerScore);
+          // })
         }
       } // End function roundConter
     })
@@ -306,7 +301,7 @@ $(document).ready(function(){
     }
   }
 
-  function buttonAnimations(){
+  function buttonAnimations() {
     if ($("#tv").attr("data-animationstatus") === "not-playing") {
       $(document).on("mouseenter", ".btn-choices", function(){
         $(this).addClass("pulse");
@@ -325,6 +320,21 @@ $(document).ready(function(){
     }
   }
   buttonAnimations();
+
+  // Show credits modal when pressing 'select' button
+  function creditsModal() {
+    $("#select, #start").on("click", function() {
+      $(this).addClass("expandOpen");
+      $("#credits-modal").modal("show");
+    })
+    $("#select, #start").on("mouseenter", function() {
+      $(this).addClass("pulse");
+    })
+    $("#select, #start").on("mouseleave", function() {
+      $(this).removeClass("pulse");
+    })
+  }
+  creditsModal();
 
 }); // End (document).ready function(){};
 
