@@ -304,6 +304,19 @@ $(document).ready(function(){
   }
   creditsModal();
 
+  function gracefulExit() {
+    $("#exit-button").on("click", function() {
+      $(this).addClass("expandOpen");
+    })
+    $("#exit-button").on("mouseenter", function() {
+      $(this).addClass("pulse");
+    })
+    $("#exit-button").on("mouseleave", function() {
+      $(this).removeClass("pulse");
+    })
+  }
+  gracefulExit();
+
 }); // End (document).ready function(){};
 
 // To Do List:
