@@ -88,46 +88,69 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
-      function revealUserChoice() {
-        if (userChoice === "Rock") {
-          // Add rock icon and rotate 90 degs
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
-          // Remove unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal")
-        } else if(userChoice === "Paper") {
-          // Add paper icon and rotate 90 degs
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
-          // Remove unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal")
-        } else {
-          // Add Scissors icon and flip horizontally
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal")
-          // Remove unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90")
-        }
-      };
 
-      function revealComputerChoice() {
-        if (computerChoice === "Rock") {
-          // Add rock icon and rotate 270 degs
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
-          // Remove unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o")
-        } else if(computerChoice === "Paper") {
-          // Add paper icon and rotate 270 degs
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
-          // Remove unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+      // Example from ptums923
+      // var appendLogo = function(){$('.logo-snow').hide().append("<a href='http://google.com'><img src='/sandbox/wp-content/uploads/2015/12/SH-WH-12-16-15-Small-trans.png'/></a>").fadeIn(2000).delay().fadeOut(6000);}
+      // setTimeout(appendLogo, 24000);
+
+      function slideRightAnimation() {
+        debugger;
+        $("#reveal-screen-user-choice").addClass("slideRight");
+      }
+
+      function slideLeftAnimation() {
+
+        $("#reveal-screen-computer-choice").addClass("slideLeft");
+      }
+
+      var revealUserChoice = function () {
+        if (userChoice === "Rock") {
+          // rotate icon 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal slideRight");
+          // delay the slide in until after rotation takes effect
+        }  else if(userChoice === "Paper") {
+          // rotate icon 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal slideRight");
+          // delay the slide in until after rotation takes effect
         } else {
-          // Add scissors icon
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
-          // Remove unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
+          // flip icon horizontally
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90 slideRight");
+          // delay the slide in until after rotation takes effect
         }
-      };
+      }
+
+      var revealComputerChoice = function () {
+        if (computerChoice === "Rock") {
+          // rotate icon 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o slideLeft");
+          // delay the slide in until after rotation takes effect
+        } else if(computerChoice === "Paper") {
+          // rotate icon 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o slideLeft");
+          // delay the slide in until after rotation takes effect
+        } else {
+          // add computer choice icon
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270 slideLeft");
+          // delay the slide in until after rotation takes effect
+        }
+      }
 
       revealUserChoice();
+      setTimeout(slideRightAnimation, 2000);
       revealComputerChoice();
+      setTimeout(slideLeftAnimation, 2000);
 
       // Use start button to pause and unpause game
       // $("#start").on("click", function() {
