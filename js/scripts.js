@@ -88,35 +88,70 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
+<<<<<<< Updated upstream
+=======
+      var userChoice = $(this).data('choice')
+      $("#reveal-screen").hide(); // Hide the last screen of the round
+      compare(userChoice, computerChoice);
+
+      $("#computers-choice").html(computerChoice);
+      $("#users-choice").html(userChoice);
+
+      function slideRightAnimation() {
+        $("#reveal-screen-user-choice").addClass("slideRight");
+      };
+
+      function slideLeftAnimation() {
+        $("#reveal-screen-computer-choice").addClass("slideLeft");
+      };
+>>>>>>> Stashed changes
       function revealUserChoice() {
         if (userChoice === "Rock") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal").hide(function(){
-            $("#reveal-screen-user-choice").addClass("slideRight").show();
-          });
-        } else if(userChoice === "Paper") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal").hide(function(){
-            $("#reveal-screen-user-choice").addClass("slideRight").show();
-          });
+          // rotate icon 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal");
+          // delay the slide in until after rotation takes effect
+    setTimeout(slideRightAnimation(), 1000);
+        }  else if(userChoice === "Paper") {
+          // rotate icon 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal")
+          // delay the slide in until after rotation takes effect
+          setTimeout(slideRightAnimation(), 1000);
         } else {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90").hide(function(){
-            $("#reveal-screen-user-choice").addClass("slideRight").show();
-          });
+          // flip icon horizontally
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal");
+          // take out unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90");
+          // delay the slide in until after rotation takes effect
+          setTimeout(slideRightAnimation(), 1000);
         }
       };
 
       function revealComputerChoice() {
         if (computerChoice === "Rock") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-paper-o fa-hand-scissors-o").hide(function(){
-            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
-          });
+          // rotate icon 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+          // delay the slide in until after rotation takes effect
+          setTimeout(slideLeftAnimation(), 1000);
         } else if(computerChoice === "Paper") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-rock-o fa-hand-scissors-o").hide(function(){
-            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
-          });
+          // rotate icon 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+          // delay the slide in until after rotation takes effect
+          setTimeout(slideLeftAnimation(), 1000);
         } else {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270").hide(function(){
-            $("#reveal-screen-computer-choice").addClass("slideLeft").show();
-          });
+          // add computer choice icon
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
+          // take out unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
+          // delay the slide in until after rotation takes effect
+          setTimeout(slideLeftAnimation(), 1000);
         }
       };
 
@@ -174,7 +209,14 @@ $(document).ready(function(){
                       bindControls(this); // Allows RPS buttons to bind.
                     })
                   })
+<<<<<<< Updated upstream
                 });
+=======
+                  $("#play-again-button").on("click", function(){
+                    $("#credits").addClass("slideUp").hide();
+                  })
+                })
+>>>>>>> Stashed changes
               } else {
                 roundCounter();
                 $("#choose-screen").slideDown(500, function() {
