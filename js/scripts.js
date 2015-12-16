@@ -90,31 +90,46 @@ $(document).ready(function(){
 
       function revealUserChoice() {
         if (userChoice === "Rock") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal");
+          // Add rock icon and rotate 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal")
         } else if(userChoice === "Paper") {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal");
+          // Add paper icon and rotate 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal")
         } else {
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90");
+          // Add Scissors icon and flip horizontally
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90")
         }
       };
 
       function revealComputerChoice() {
         if (computerChoice === "Rock") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-paper-o fa-hand-scissors-o");
+          // Add rock icon and rotate 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o")
         } else if(computerChoice === "Paper") {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+          // Add paper icon and rotate 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o");
         } else {
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
+          // Add scissors icon
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
         }
       };
 
       revealUserChoice();
       revealComputerChoice();
 
-
-
-
-
+      // Use start button to pause and unpause game
       // $("#start").on("click", function() {
       //   if($(this).attr("data-status") === "on") {
       //     $(this)
@@ -128,9 +143,6 @@ $(document).ready(function(){
       //     $("#pause-screen").slideUp();
       //   }
       // })
-
-
-
 
       // Begin TV screen animations
       $(".btn-choices").off(); // Control buttons are disabled during tv animations
