@@ -176,7 +176,7 @@ $(document).ready(function(){
                       bindControls(this); // Allows RPS buttons to bind.
                     })
                   })
-                  $("#play-again-button").on("click", function(){
+                  $(".btn-choices").on("click", function(){
                     $("#credits").addClass("slideUp").hide();
                   })
                 });
@@ -307,6 +307,7 @@ $(document).ready(function(){
   function gracefulExit() {
     $("#exit-button").on("click", function() {
       $(this).addClass("expandOpen");
+      location.reload();
     })
     $("#exit-button").on("mouseenter", function() {
       $(this).addClass("pulse");
