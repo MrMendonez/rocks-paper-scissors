@@ -156,7 +156,7 @@ $(document).ready(function(){
         $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
           $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(function() {
             $("#end-of-round-screen").fadeIn(1000).delay(500).fadeOut(function() {
-              if (rps.gameState.round === 5) {
+              if (rps.gameState.round === 5 || rps.gameState.userScore === 3 || rps.gameState.computerScore === 3) {
                 if (rps.gameState.userScore > rps.gameState.computerScore) {
                   $(".won-lost-or-tied-series").html(beatMike);
                 } else if (rps.gameState.computerScore > rps.gameState.userScore) {
@@ -289,6 +289,14 @@ $(document).ready(function(){
     })
   }
   creditsModal();
+
+  // Restart button
+  function restartGame() {
+    $("#reset-button").on("click", function() {
+      location.reload();
+    })
+  }
+  restartGame();
 
   function gracefulExit() {
     $("#exit-button").on("click", function() {
