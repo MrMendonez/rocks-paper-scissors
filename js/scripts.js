@@ -15,12 +15,11 @@ $(document).ready(function(){
   var rockWins = "Rock wins!";
   var paperWins = "Paper wins!";
   var scissorsWins = "Scissors wins!";
-  var youLose = "You lose!"
-  var youWin = "You win!"
-  var beatMike = "You beat Mike Tyson!"
-  var mikeBeatYou = "Mike Tyson beat you!"
-  var tiedMike  = "You tied Mike Tyson"
-  var fbase = new Firebase("https://burning-torch-7924.firebaseio.com/");
+  var youLose = "You lose!";
+  var youWin = "You win!";
+  var beatMike = "You beat Mike Tyson!";
+  var mikeBeatYou = "Mike Tyson beat you!";
+  var tiedMike  = "You tied Mike Tyson";
 
   // Hide msgs
   $("#gameplay-panel, #pause-screen").hide();
@@ -156,8 +155,15 @@ $(document).ready(function(){
         $("#scissors-screen").delay(1500).slideDown(500).delay(1000).fadeOut(250);
         $("#shoot-screen").delay(2250).slideDown(500).delay(250).fadeOut(250, function() {
           $("#reveal-screen").fadeIn(1000).delay(1500).fadeOut(function() {
-            $("#end-of-round-screen").fadeIn(1000).delay(1000).fadeOut(function() {
+            $("#end-of-round-screen").fadeIn(1000).delay(500).fadeOut(function() {
               if (rps.gameState.round === 5) {
+                if (rps.gameState.userScore > rps.gameState.computerScore) {
+                  $(".won-lost-or-tied-series").html(beatMike);
+                } else if (rps.gameState.computerScore > rps.gameState.userScore) {
+                  $(".won-lost-or-tied-series").html(mikeBeatYou);
+                } else {
+                  $(".won-lost-or-tied-series").html(tiedMike);
+                } // End if statement
                 $("#game-over-screen").fadeIn(500, function(){
                   $("#credits").addClass("pullUp").show();
                   $(".btn-choices").on("click", function() {
@@ -196,26 +202,6 @@ $(document).ready(function(){
       function roundCounter() {
         rps.gameState.round++;
         $(".round-number").html(rps.gameState.round);
-        if (rps.gameState.round === 5){
-          if (rps.gameState.userScore > rps.gameState.computerScore) {
-            $(".won-lost-or-tied-series").html(beatMike);
-          } else if (rps.gameState.computerScore > rps.gameState.userScore) {
-            $(".won-lost-or-tied-series").html(mikeBeatYou);
-          } else {
-            $(".won-lost-or-tied-series").html(tiedMike);
-          }
-          // $("#game-over-modal").modal("show");
-          // $("#game-over-modal").on("hidden.bs.modal", function (e) {
-          //   rps.gameState.round = 0;
-          //   rps.gameState.userScore = 0;
-          //   rps.gameState.computerScore = 0;
-          //   rps.gameState.tiedGameCount = 0;
-          //   $(".round-number").html(rps.gameState.round);
-          //   $(".tied-game-count").html(rps.gameState.tiedGameCount);
-          //   $(".user-score").html(rps.gameState.userScore);
-          //   $(".computer-score").html(rps.gameState.computerScore);
-          // })
-        }
       } // End function roundConter
     })
   }; // End bindControls function
