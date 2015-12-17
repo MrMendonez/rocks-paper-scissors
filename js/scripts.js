@@ -55,7 +55,7 @@ $(document).ready(function(){
     $(".username-placeholder").html(userName);
     bindControls(); // Allow buttons to become active
     // Hide Welcome screens and reveals gameplay panel
-    $("#name-form-div, #nintendo-div").slideUp(function() {
+    $("#name-form-div, #1987-nintendo-div").slideUp(function() {
       $("#gameplay-panel").slideDown(1000);
     })
   })
@@ -88,42 +88,6 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
-<<<<<<< Updated upstream
-
-      // Example from ptums923
-      // var appendLogo = function(){$('.logo-snow').hide().append("<a href='http://google.com'><img src='/sandbox/wp-content/uploads/2015/12/SH-WH-12-16-15-Small-trans.png'/></a>").fadeIn(2000).delay().fadeOut(6000);}
-      // setTimeout(appendLogo, 24000);
-
-      function slideRightAnimation() {
-        debugger;
-        $("#reveal-screen-user-choice").addClass("slideRight");
-      }
-
-      function slideLeftAnimation() {
-
-        $("#reveal-screen-computer-choice").addClass("slideLeft");
-      }
-
-      var revealUserChoice = function () {
-        if (userChoice === "Rock") {
-          // rotate icon 90 degs
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
-          // take out unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal slideRight");
-          // delay the slide in until after rotation takes effect
-        }  else if(userChoice === "Paper") {
-          // rotate icon 90 degs
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90");
-          // take out unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal slideRight");
-          // delay the slide in until after rotation takes effect
-        } else {
-          // flip icon horizontally
-          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal");
-          // take out unnecessary classes
-          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90 slideRight");
-          // delay the slide in until after rotation takes effect
-=======
       function revealUserChoice() {
         if (userChoice === "Rock") {
           // Add rock icon and rotate 90 degs
@@ -140,25 +104,11 @@ $(document).ready(function(){
           $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal")
           // Remove unnecessary classes
           $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90")
->>>>>>> Stashed changes
         }
-      }
+      };
 
-      var revealComputerChoice = function () {
+      function revealComputerChoice() {
         if (computerChoice === "Rock") {
-<<<<<<< Updated upstream
-          // rotate icon 270 degs
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
-          // take out unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o slideLeft");
-          // delay the slide in until after rotation takes effect
-        } else if(computerChoice === "Paper") {
-          // rotate icon 270 degs
-          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
-          // take out unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o slideLeft");
-          // delay the slide in until after rotation takes effect
-=======
           // Add rock icon and rotate 270 degs
           $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
           // Remove unnecessary classes
@@ -168,25 +118,16 @@ $(document).ready(function(){
           $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
           // Remove unnecessary classes
           $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o");
->>>>>>> Stashed changes
         } else {
           // Add scissors icon
           $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
-<<<<<<< Updated upstream
-          // take out unnecessary classes
-          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270 slideLeft");
-          // delay the slide in until after rotation takes effect
-=======
           // Remove unnecessary classes
           $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
->>>>>>> Stashed changes
         }
-      }
+      };
 
       revealUserChoice();
-      setTimeout(slideRightAnimation, 2000);
       revealComputerChoice();
-      setTimeout(slideLeftAnimation, 2000);
 
       // Use start button to pause and unpause game
       // $("#start").on("click", function() {
@@ -235,7 +176,7 @@ $(document).ready(function(){
                       bindControls(this); // Allows RPS buttons to bind.
                     })
                   })
-                  $(".btn-choices").on("click", function(){
+                  $("#play-again-button").on("click", function(){
                     $("#credits").addClass("slideUp").hide();
                   })
                 });
@@ -366,7 +307,6 @@ $(document).ready(function(){
   function gracefulExit() {
     $("#exit-button").on("click", function() {
       $(this).addClass("expandOpen");
-      location.reload();
     })
     $("#exit-button").on("mouseenter", function() {
       $(this).addClass("pulse");

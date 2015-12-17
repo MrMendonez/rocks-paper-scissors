@@ -96,7 +96,7 @@ body {
   margin: 0 auto;
 }
 
-.tossing-nonstop{
+.tossing-nonstop {
   animation-name: tossing;
   -webkit-animation-name: tossing;  
 
