@@ -285,7 +285,7 @@ $(document).ready(function(){
       $(this).addClass("pulse");
     })
     $("#select, #start").on("mouseleave", function() {
-      $(this).removeClass("pulse");
+      $(this).removeClass("pulse expandOpen");
     })
   }
   creditsModal();
