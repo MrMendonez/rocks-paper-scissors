@@ -55,7 +55,7 @@ $(document).ready(function(){
     $(".username-placeholder").html(userName);
     bindControls(); // Allow buttons to become active
     // Hide Welcome screens and reveals gameplay panel
-    $("#name-form-div").slideUp(function() {
+    $("#name-form-div, #nintendo-div").slideUp(function() {
       $("#gameplay-panel").slideDown(1000);
     })
   })
@@ -88,6 +88,7 @@ $(document).ready(function(){
       $("#computers-choice").html(computerChoice);
       $("#users-choice").html(userChoice);
 
+<<<<<<< Updated upstream
 
       // Example from ptums923
       // var appendLogo = function(){$('.logo-snow').hide().append("<a href='http://google.com'><img src='/sandbox/wp-content/uploads/2015/12/SH-WH-12-16-15-Small-trans.png'/></a>").fadeIn(2000).delay().fadeOut(6000);}
@@ -122,11 +123,30 @@ $(document).ready(function(){
           // take out unnecessary classes
           $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90 slideRight");
           // delay the slide in until after rotation takes effect
+=======
+      function revealUserChoice() {
+        if (userChoice === "Rock") {
+          // Add rock icon and rotate 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o fa-flip-horizontal")
+        } else if(userChoice === "Paper") {
+          // Add paper icon and rotate 90 degs
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-rotate-90")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o fa-flip-horizontal")
+        } else {
+          // Add Scissors icon and flip horizontally
+          $("#reveal-screen-user-choice").addClass("fa-hand-" + userChoice.toLowerCase() + "-o fa-flip-horizontal")
+          // Remove unnecessary classes
+          $("#reveal-screen-user-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-90")
+>>>>>>> Stashed changes
         }
       }
 
       var revealComputerChoice = function () {
         if (computerChoice === "Rock") {
+<<<<<<< Updated upstream
           // rotate icon 270 degs
           $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270");
           // take out unnecessary classes
@@ -138,12 +158,28 @@ $(document).ready(function(){
           // take out unnecessary classes
           $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o slideLeft");
           // delay the slide in until after rotation takes effect
+=======
+          // Add rock icon and rotate 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-paper-o fa-hand-scissors-o")
+        } else if(computerChoice === "Paper") {
+          // Add paper icon and rotate 270 degs
+          $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o fa-rotate-270")
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-scissors-o");
+>>>>>>> Stashed changes
         } else {
-          // add computer choice icon
+          // Add scissors icon
           $("#reveal-screen-computer-choice").addClass("fa-hand-" + computerChoice.toLowerCase() + "-o")
+<<<<<<< Updated upstream
           // take out unnecessary classes
           $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270 slideLeft");
           // delay the slide in until after rotation takes effect
+=======
+          // Remove unnecessary classes
+          $("#reveal-screen-computer-choice").removeClass("fa-hand-rock-o fa-hand-paper-o fa-rotate-270");
+>>>>>>> Stashed changes
         }
       }
 
