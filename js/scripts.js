@@ -307,6 +307,7 @@ $(document).ready(function(){
   function gracefulExit() {
     $("#exit-button").on("click", function() {
       $(this).addClass("expandOpen");
+      location.reload();
     })
     $("#exit-button").on("mouseenter", function() {
       $(this).addClass("pulse");
@@ -314,11 +315,14 @@ $(document).ready(function(){
     $("#exit-button").on("mouseleave", function() {
       $(this).removeClass("pulse");
     })
+
   }
   gracefulExit();
 
 }); // End (document).ready function(){};
 
 // To Do List:
+// game over logic needs to be fixed
+
 // Figure out how to stop rock, paper, scissors buttons from animating (pulse and expandOpen) during tv animation
 // Figure out how to pause animations if someone clicks start in the middle of the animations.
