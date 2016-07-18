@@ -18,3 +18,6 @@ or
 Allow the user to choose the number of rounds, any number. (Must prepare to declare a tie.)
 Optional II:
 Research and Include the additional logic for (Rock, Paper, Scissors, Lizard, Spock).
+
+Play Mike Tyson's Shoot-Out!
+https://miketysonsshootout.herokuapp.com/
